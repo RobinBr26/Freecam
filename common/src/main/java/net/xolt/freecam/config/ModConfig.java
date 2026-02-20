@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Config(name = "freecam")
+@Config(name = "fcam")
 public class ModConfig implements ConfigData {
 
     @ConfigEntry.Gui.Excluded
@@ -35,6 +35,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public ControlsConfig controls = new ControlsConfig();
+
     public static class ControlsConfig {
         @ModBindingsConfig
         private Object keys;
@@ -43,6 +44,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public MovementConfig movement = new MovementConfig();
+
     public static class MovementConfig {
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
@@ -60,6 +62,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public CollisionConfig collision = new CollisionConfig();
+
     public static class CollisionConfig {
         @ConfigEntry.Gui.Tooltip
         public boolean ignoreTransparent = false;
@@ -72,6 +75,7 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.TransitiveObject
         public CollisionWhitelist whitelist = new CollisionWhitelist();
+
         public static class CollisionWhitelist {
             @ConfigEntry.Gui.Tooltip(count = 2)
             public List<String> ids = new ArrayList<>();
@@ -90,6 +94,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public VisualConfig visual = new VisualConfig();
+
     public static class VisualConfig {
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
@@ -111,6 +116,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public UtilityConfig utility = new UtilityConfig();
+
     public static class UtilityConfig {
         @ConfigEntry.Gui.Tooltip
         public boolean disableOnDamage = true;
@@ -129,6 +135,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public ServerConfig servers = new ServerConfig();
+
     public static class ServerConfig {
         @ConfigEntry.Gui.Tooltip(count = 2)
         @ConfigEntry.Gui.EnumHandler(option = EnumDisplayOption.BUTTON)
@@ -142,6 +149,7 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.CollapsibleObject
     public NotificationConfig notification = new NotificationConfig();
+
     public static class NotificationConfig {
         @ConfigEntry.Gui.Tooltip
         public boolean notifyFreecam = true;
@@ -157,7 +165,7 @@ public class ModConfig implements ConfigData {
         private final String key;
 
         FlightMode(String name) {
-            this.key = "text.autoconfig.freecam.option.movement.flightMode." + name;
+            this.key = "text.autoconfig.fcam.option.movement.flightMode." + name;
         }
 
         @Override
@@ -173,7 +181,7 @@ public class ModConfig implements ConfigData {
         private final String key;
 
         InteractionMode(String name) {
-            this.key = "text.autoconfig.freecam.option.utility.interactionMode." + name;
+            this.key = "text.autoconfig.fcam.option.utility.interactionMode." + name;
         }
 
         @Override
@@ -191,7 +199,7 @@ public class ModConfig implements ConfigData {
         private final String key;
 
         Perspective(String name) {
-            this.key = "text.autoconfig.freecam.option.visual.perspective." + name;
+            this.key = "text.autoconfig.fcam.option.visual.perspective." + name;
         }
 
         @Override
@@ -205,7 +213,7 @@ public class ModConfig implements ConfigData {
 
         @Override
         public @NotNull String getKey() {
-            return "text.autoconfig.freecam.option.servers.mode." + toString().toLowerCase();
+            return "text.autoconfig.fcam.option.servers.mode." + toString().toLowerCase();
         }
     }
 }

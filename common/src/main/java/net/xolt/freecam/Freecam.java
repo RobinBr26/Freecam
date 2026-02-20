@@ -55,8 +55,7 @@ public class Freecam {
                         false,
                         false,
                         keyPresses.shift(),
-                        false
-                );
+                        false);
                 mc.player.input = input;
             }
         }
@@ -103,7 +102,8 @@ public class Freecam {
     public static void toggle() {
         if (isRestrictedOnServer()) {
             if (ModConfig.INSTANCE.notification.notifyFreecam) {
-                MC.player.displayClientMessage(Component.translatable("msg.freecam.restrictedByConfig", MC.getCurrentServer().ip), true);
+                MC.player.displayClientMessage(
+                        Component.translatable("msg.fcam.restrictedByConfig", MC.getCurrentServer().ip), true);
             }
             return;
         }
@@ -131,7 +131,8 @@ public class Freecam {
 
         if (isRestrictedOnServer()) {
             if (ModConfig.INSTANCE.notification.notifyTripod) {
-                MC.player.displayClientMessage(Component.translatable("msg.freecam.restrictedByConfig", MC.getCurrentServer().ip), true);
+                MC.player.displayClientMessage(
+                        Component.translatable("msg.fcam.restrictedByConfig", MC.getCurrentServer().ip), true);
             }
             return;
         }
@@ -198,7 +199,7 @@ public class Freecam {
         activeTripod = tripod;
 
         if (ModConfig.INSTANCE.notification.notifyTripod) {
-            MC.player.displayClientMessage(Component.translatable("msg.freecam.openTripod", tripod), true);
+            MC.player.displayClientMessage(Component.translatable("msg.fcam.openTripod", tripod), true);
         }
     }
 
@@ -208,7 +209,7 @@ public class Freecam {
 
         if (MC.player != null) {
             if (ModConfig.INSTANCE.notification.notifyTripod) {
-                MC.player.displayClientMessage(Component.translatable("msg.freecam.closeTripod", activeTripod), true);
+                MC.player.displayClientMessage(Component.translatable("msg.fcam.closeTripod", activeTripod), true);
             }
         }
         activeTripod = TripodSlot.NONE;
@@ -222,7 +223,7 @@ public class Freecam {
         MC.setCameraEntity(freeCamera);
 
         if (ModConfig.INSTANCE.notification.notifyFreecam) {
-            MC.player.displayClientMessage(Component.translatable("msg.freecam.enable"), true);
+            MC.player.displayClientMessage(Component.translatable("msg.fcam.enable"), true);
         }
     }
 
@@ -231,7 +232,7 @@ public class Freecam {
 
         if (MC.player != null) {
             if (ModConfig.INSTANCE.notification.notifyFreecam) {
-                MC.player.displayClientMessage(Component.translatable("msg.freecam.disable"), true);
+                MC.player.displayClientMessage(Component.translatable("msg.fcam.disable"), true);
             }
         }
     }
@@ -272,7 +273,7 @@ public class Freecam {
         }
 
         if (ModConfig.INSTANCE.notification.notifyTripod) {
-            MC.player.displayClientMessage(Component.translatable("msg.freecam.tripodReset", tripod), true);
+            MC.player.displayClientMessage(Component.translatable("msg.fcam.tripodReset", tripod), true);
         }
     }
 
@@ -311,8 +312,7 @@ public class Freecam {
         freeCamera.copyPosition(MC.player);
         freeCamera.applyPerspective(
                 ModConfig.INSTANCE.visual.perspective,
-                ModConfig.INSTANCE.collision.alwaysCheck || !ModConfig.INSTANCE.collision.ignoreAll
-        );
+                ModConfig.INSTANCE.collision.alwaysCheck || !ModConfig.INSTANCE.collision.ignoreAll);
     }
 
     @ApiStatus.AvailableSince("0.4.0")
@@ -355,7 +355,8 @@ public class Freecam {
                     .map(String::trim)
                     .map(String::toLowerCase)
                     .anyMatch(ip::equals);
-            default -> throw new IllegalStateException("Unexpected mode value in Freecam.isRestrictedOnServer: " + mode);
+            default ->
+                throw new IllegalStateException("Unexpected mode value in Freecam.isRestrictedOnServer: " + mode);
         };
     }
 }

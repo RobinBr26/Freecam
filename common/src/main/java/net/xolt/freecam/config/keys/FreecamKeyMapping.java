@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 public class FreecamKeyMapping extends KeyMapping implements Tickable {
 
-    private static final Category FREECAM_CATEGORY = Category.register(Identifier.fromNamespaceAndPath("freecam", "freecam"));
+    private static final Category FREECAM_CATEGORY = Category.register(Identifier.fromNamespaceAndPath("fcam", "fcam"));
 
     private final Consumer<FreecamKeyMapping> onTick;
 
@@ -20,7 +20,7 @@ public class FreecamKeyMapping extends KeyMapping implements Tickable {
     }
 
     FreecamKeyMapping(String translationKey, InputConstants.Type type, int code, Consumer<FreecamKeyMapping> onTick) {
-        super("key.freecam." + translationKey, type, code, FREECAM_CATEGORY);
+        super("key.fcam." + translationKey, type, code, FREECAM_CATEGORY);
         this.onTick = onTick;
     }
 
@@ -32,10 +32,12 @@ public class FreecamKeyMapping extends KeyMapping implements Tickable {
     /**
      * Reset whether the key was pressed.
      *
-     * @implNote Cannot use {@link KeyMapping#release()} because it doesn't work as expected.
+     * @implNote Cannot use {@link KeyMapping#release()} because it doesn't work as
+     *           expected.
      */
     @SuppressWarnings("StatementWithEmptyBody")
     public void reset() {
-        while (consumeClick()) {}
+        while (consumeClick()) {
+        }
     }
 }
