@@ -14,7 +14,8 @@ import static net.xolt.freecam.config.gui.AutoConfigExtensions.isArrayOrListOfTy
 import static org.apache.commons.lang3.StringUtils.substringBefore;
 
 class ValidateRegexImpl {
-    private ValidateRegexImpl() {}
+    private ValidateRegexImpl() {
+    }
 
     static void apply(GuiRegistry registry) {
 
@@ -27,8 +28,7 @@ class ValidateRegexImpl {
                     return guis;
                 },
                 field -> Objects.equals(String.class, field.getType()),
-                ValidateRegex.class
-        );
+                ValidateRegex.class);
 
         registry.registerAnnotationTransformer(
                 (guis, i18n, field, config, defaults, guiProvider) -> {
@@ -39,12 +39,12 @@ class ValidateRegexImpl {
                     return guis;
                 },
                 isArrayOrListOfType(String.class),
-                ValidateRegex.class
-        );
+                ValidateRegex.class);
     }
 
     /**
-     * Supplies an error message when the text is not a valid {@link Pattern regex pattern}.
+     * Supplies an error message when the text is not a valid {@link Pattern regex
+     * pattern}.
      *
      * @param text the text that should compile to a regex.
      * @return an optional error message.
@@ -55,7 +55,7 @@ class ValidateRegexImpl {
             return Optional.empty();
         } catch (PatternSyntaxException e) {
             String message = substringBefore(e.getLocalizedMessage(), '\n');
-            return Optional.of(Component.translatable("text.autoconfig.freecam.error.invalidRegex", message));
+            return Optional.of(Component.translatable("text.autoconfig.fcam.error.invalidRegex", message));
         }
     }
 }
